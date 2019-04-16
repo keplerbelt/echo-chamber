@@ -66,6 +66,10 @@ void setup (void) {
   SPSR |= _BV(SPI2X);
 
   process_it = false;
+  Serial.println(h1_sep);
+  Serial.println(" Echo Chamber");
+  Serial.println(" Started!");
+  Serial.println(h1_sep);
 }
 
 
