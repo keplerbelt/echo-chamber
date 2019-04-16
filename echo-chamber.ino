@@ -13,7 +13,7 @@ const char asciimap[34][4] = {
   "SOH",
   "STX",
   "ETX",
-  "EOT", 
+  "EOT",
   "ENQ",
   "ACK",
   "BEL",
@@ -60,12 +60,15 @@ void setup (void) {
   // Turn on interrupts
   SPCR |= _BV(SPIE);
 
-  // CLK = 8 MHz 
+  // CLK = 8 MHz
   // (Master should transmit data 0.25x speed or less)
   //SPCR |= _BV(SPR1);
   SPSR |= _BV(SPI2X);
 
   process_it = false;
+
+  // Startup message
+  // This will help detect restarts
   Serial.println(h1_sep);
   Serial.println(" Echo Chamber");
   Serial.println(" Started!");
@@ -115,7 +118,7 @@ void loop (void) {
 }
 
 
-// This will allow us to cycle through the 
+// This will allow us to cycle through the
 // 256 bytes buffer
 int nextIndex(int index) {
   if (index == FULL - 1) {
